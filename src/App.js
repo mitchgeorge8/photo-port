@@ -5,9 +5,9 @@ import About from "./components/About";
 function App() {
   return (
     <div>
-      <Nav></Nav>
+      <Nav />
       <main>
-        <About></About>
+        <About />
       </main>
     </div>
   );
