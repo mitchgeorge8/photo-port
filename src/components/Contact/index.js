@@ -10,7 +10,7 @@ function ContactForm() {
   const { name, email, message } = formState;
   const [errorMessage, setErrorMessage] = useState("");
 
-  function handleChange(e) {
+  function handleBlur(e) {
     if (e.target.name === "email") {
       const isValid = validateEmail(e.target.value);
 
@@ -46,7 +46,7 @@ function ContactForm() {
           <input
             type="text"
             defaultValue={name}
-            onChange={handleChange}
+            onBlur={handleBlur}
             name="name"
           />
         </div>
@@ -55,7 +55,7 @@ function ContactForm() {
           <input
             type="email"
             defaultValue={email}
-            onChange={handleChange}
+            onBlur={handleBlur}
             name="email"
           />
         </div>
@@ -64,10 +64,15 @@ function ContactForm() {
           <textarea
             name="message"
             defaultValue={message}
-            onChange={handleChange}
+            onBlur={handleBlur}
             rows="5"
           />
         </div>
+        {errorMessage && (
+          <div>
+            <p className="error-text">{errorMessage}</p>
+          </div>
+        )}
         <button type="submit">Submit</button>
       </form>
     </section>
