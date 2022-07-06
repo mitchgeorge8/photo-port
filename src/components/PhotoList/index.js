@@ -118,14 +118,18 @@ function PhotoList({ category }) {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie",
     },
   ]);
-
   const currentPhotos = photos.filter((photo) => photo.category === category);
+  const [currentPhoto, setCurrentPhoto] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = (image, i) => {};
+  const toggleModal = (image, i) => {
+    setCurrentPhoto({ ...image, index: i });
+    setIsModalOpen(true);
+  };
 
   return (
     <div>
-      <Modal />
+      {isModalOpen && <Modal currentPhoto={currentPhoto} />}
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
           <img
